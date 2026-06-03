@@ -15,36 +15,41 @@ export const info = {
   linkedin: "https://www.linkedin.com/in/akshaynayee1/",
   instagram: "https://www.instagram.com/aakkii01",
   github: "https://github.com/Nayee001",
+
   position: [
-    "Full-Stack Developer",
-    "Software Engineer",
-    "IoT & Cloud Enthusiast",
+    "Senior Front-End Engineer",
+    "Angular Developer",
+    "UI Engineer",
+    "TypeScript Developer",
   ],
+
   selfPortrait: self,
   gradient: `-webkit-linear-gradient(135deg, ${colors})`,
   baseColor: colors[0],
+
   miniBio: [
     {
       emoji: "🌍",
       text: "Based in the U.S.",
     },
     {
-      emoji: "💼",
-      text: "Graduate Research Assistant at Gannon University",
+      emoji: "💻",
+      text: "Senior Front-End Engineer",
     },
     {
       emoji: "🎓",
       text: "Master’s in Software Engineering",
     },
     {
-      emoji: "☁️",
-      text: "AWS Certified Cloud Practitioner",
+      emoji: "⚡",
+      text: "Angular | TypeScript | RxJS | NgRx",
     },
     {
       emoji: "📧",
-      text: "akshaynayee1@gmail.com",
+      text: "akshaynayee2@gmail.com",
     },
   ],
+
   socials: [
     {
       link: "https://www.instagram.com/aakkii01",
@@ -62,32 +67,53 @@ export const info = {
       label: "LinkedIn",
     },
   ],
-  bio: "Hi, I'm Akshaykumar Nayee! A passionate Full-Stack Developer and Graduate Research Assistant specializing in Software Engineering at Gannon University. With over four years of experience, I thrive on building scalable web applications, IoT platforms, and machine learning-driven solutions. My expertise spans full-stack development, cloud computing, and real-time data processing. Let's innovate together!",
+
+  bio:
+    "Hi, I'm Akshaykumar Nayee! I'm a Front-End Software Engineer with 5+ years of experience building scalable enterprise web applications using Angular, TypeScript, RxJS, NgRx, and modern UI architectures. I specialize in developing responsive user interfaces, reusable component libraries, real-time dashboards, Nx monorepo solutions, and high-performance applications. I enjoy transforming complex business requirements into intuitive, maintainable, and business-driven front-end solutions.",
+
   skills: {
     proficientWith: [
-      "Python",
-      "PHP",
+      "Angular",
+      "TypeScript",
       "JavaScript",
-      "React.js",
-      "Next.js",
-      "Laravel",
-      "Flask",
-      "Django",
-      "Raspberry Pi",
-      "MySQL",
-      "MongoDB",
-      "PostgreSQL",
-      "Linux",
-      "Docker",
-      "Bootstrap",
+      "RxJS",
+      "NgRx",
+      "Nx Workspace",
+      "Ionic Framework",
+      "Angular Material",
       "HTML5",
-      "CSS",
+      "CSS3",
+      "SCSS",
+      "Bootstrap",
+      "Responsive Web Design",
+      "REST API Integration",
+      "Reactive Forms",
+      "Route Guards",
+      "Lazy Loading",
+      "Component Libraries",
+      "Monorepo Architecture",
+      "Git",
     ],
-    exposedTo: ["Node.js", "Redis", "Kubernetes", "GraphQL"],
+
+    exposedTo: [
+      "Micro Frontends",
+      "Design Systems",
+      "WebSockets",
+      "GraphQL",
+      "Node.js",
+      "Java Spring Boot",
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+    ],
   },
+
   portfolio: [
     {
-      title: "Melolem",
+      title: "Enterprise Angular Dashboard",
       live: "https://www.melolem.com/",
       image: melolem,
     },
