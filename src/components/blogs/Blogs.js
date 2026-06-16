@@ -13,7 +13,7 @@ export default function ComingSoon() {
                         I`m working hard to bring you this content. Stay tuned!
                     </Typography>
                     <Typography align="center" style={{fontFamily: "'Dancing Script', cursive", marginTop: '2rem', fontSize: '22px'}}>
-                        Akshaykumar Nayee
+                        Akshay Nayee
                     </Typography>
                 </Grid>
             </Grid>

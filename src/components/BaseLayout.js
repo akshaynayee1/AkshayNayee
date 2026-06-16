@@ -4,8 +4,8 @@ import Navbar from "./Navbar";
 import Home from "./home/Home";
 import About from "./about/About";
 import Blogs from "./blogs/Blogs";
-
 import Portfolio from "./portfolio/Portfolio";
+import DarkModeBackground from "./DarkModeBackground";
 import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
@@ -20,7 +20,7 @@ export default function BaseLayout() {
   }
 
   useEffect(() => {
-    let detectedDarkMode = eval(localStorage.getItem("darkMode"));
+    let detectedDarkMode = localStorage.getItem("darkMode") === "true";
 
     if (detectedDarkMode) {
       setDarkMode(detectedDarkMode);
@@ -31,12 +31,14 @@ export default function BaseLayout() {
 
   return (
     <Box className={darkMode ? Style.dark : Style.light}>
+      {darkMode && <DarkModeBackground />}
       <Grid
         container
         display={"flex"}
         flexDirection={"column"}
         minHeight={"100vh"}
         justifyContent={"space-between"}
+        sx={{ position: 'relative', zIndex: 1 }}
       >
         <Grid item>
           <Navbar darkMode={darkMode} handleClick={handleToggleDarkMode} />

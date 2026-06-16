@@ -1,60 +1,98 @@
 import React from 'react';
 import Style from './About.module.scss';
-import Terminal from "./Terminal";
-import {Box} from "@mui/material";
-import {info} from "../../info/Info";
-
+import { Box } from "@mui/material";
+import { info } from "../../info/Info";
 
 export default function About() {
-    const firstName = info.firstName.toLowerCase()
-
-    function aboutMeText() {
-        return <>
-            <p><span style={{color: info.baseColor}}>{firstName}{info.lastName.toLowerCase()} $</span> cat
-                about {firstName} </p>
-            <p><span style={{color: info.baseColor}}>about {firstName} <span
-                className={Style.green}>(main)</span> $ </span>
-                {info.bio}
-            </p>
-        </>;
-    }
-
-    function skillsText() {
-        return <>
-            <p><span style={{color: info.baseColor}}>{firstName}{info.lastName.toLowerCase()} $</span> cd skills/tools
-            </p>
-            <p><span style={{color: info.baseColor}}>skills/tools <span
-                className={Style.green}>(main)</span> $</span> ls</p>
-            <p style={{color: info.baseColor}}> Proficient With</p>
-            <ul className={Style.skills}>
-                {info.skills.proficientWith.map((proficiency, index) => <li key={index}>{proficiency}</li>)}
-            </ul>
-            <p style={{color: info.baseColor}}> Exposed To</p>
-            <ul className={Style.skills}>
-                {info.skills.exposedTo.map((skill, index) => <li key={index}>{skill}</li>)}
-            </ul>
-        </>;
-    }
-
-    // function miscText() {
-    //     return <>
-    //         <p><span style={{color: info.baseColor}}>{firstName}{info.lastName.toLowerCase()} $</span> cd
-    //             hobbies/interests</p>
-    //         <p><span style={{color: info.baseColor}}>hobbies/interests <span
-    //             className={Style.green}>(main)</span> $</span> ls</p>
-    //         <ul>
-    //             {info.hobbies.map((hobby, index) => (
-    //                 <li key={index}><Box component={'span'} mr={'1rem'}>{hobby.emoji}</Box>{hobby.label}</li>
-    //             ))}
-    //         </ul>
-    //     </>;
-    // }
-
     return (
-        <Box display={'flex'} flexDirection={'column'} alignItems={'center'} mt={'3rem'}>
-            <Terminal text={aboutMeText()}/>
-            <Terminal text={skillsText()}/>
-            {/* <Terminal text={miscText()}/> */}
+        <Box className={Style.aboutPage}>
+
+            {/* Summary */}
+            <section className={Style.section}>
+                <h3 className={Style.sectionHeading}>About Me</h3>
+                <div className={Style.bioCard}>
+                    <p>{info.bio}</p>
+                </div>
+            </section>
+
+            {/* Skills */}
+            <section className={Style.section}>
+                <h3 className={Style.sectionHeading}>Skills</h3>
+
+                <div className={Style.skillGroup}>
+                    <p className={Style.skillGroupLabel}>Proficient With</p>
+                    <div className={Style.chipWrap}>
+                        {info.skills.proficientWith.map((s, i) => (
+                            <span key={i} className={Style.chipPrimary}>{s}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className={Style.skillGroup}>
+                    <p className={Style.skillGroupLabel}>Exposed To</p>
+                    <div className={Style.chipWrap}>
+                        {info.skills.exposedTo.map((s, i) => (
+                            <span key={i} className={Style.chipSecondary}>{s}</span>
+                        ))}
+                    </div>
+                </div>
+
+                {info.certifications && (
+                    <div className={Style.skillGroup}>
+                        <p className={Style.skillGroupLabel}>Certifications</p>
+                        <div className={Style.chipWrap}>
+                            {info.certifications.map((c, i) => (
+                                <span key={i} className={Style.chipCert}>&#10003; {c}</span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </section>
+
+            {/* Experience */}
+            <section className={Style.section}>
+                <h3 className={Style.sectionHeading}>Experience</h3>
+                <div className={Style.timeline}>
+                    {info.experience.map((exp, i) => (
+                        <div key={i} className={Style.timelineItem}>
+                            <div className={Style.timelineDot} />
+                            <div className={Style.timelineCard}>
+                                <div className={Style.expHeader}>
+                                    <div>
+                                        <span className={Style.company}>{exp.company}</span>
+                                        <span className={Style.jobTitle}>{exp.title}</span>
+                                    </div>
+                                    <div className={Style.expMeta}>
+                                        <span>{exp.duration}</span>
+                                        <span>{exp.location}</span>
+                                    </div>
+                                </div>
+                                <ul className={Style.bulletList}>
+                                    {exp.bullets.map((b, j) => (
+                                        <li key={j}>{b}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Education */}
+            <section className={Style.section}>
+                <h3 className={Style.sectionHeading}>Education</h3>
+                <div className={Style.eduGrid}>
+                    {info.education.map((edu, i) => (
+                        <div key={i} className={Style.eduCard}>
+                            <span className={Style.eduYear}>{edu.year}</span>
+                            <p className={Style.eduSchool}>{edu.school}</p>
+                            <p className={Style.eduDegree}>{edu.degree}</p>
+                            <p className={Style.eduLocation}>{edu.location}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
         </Box>
-    )
+    );
 }
