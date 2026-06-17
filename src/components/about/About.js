@@ -195,6 +195,11 @@ export default function About({ darkMode }) {
 
               <div className={Style.expRight}>
                 <div className={Style.expCard}>
+                  <div className={Style.expMobileHeader}>
+                    <span className={Style.expCompany}>{exp.company}</span>
+                    <span className={Style.expDuration}>{exp.duration}</span>
+                    <span className={Style.expLoc}>{exp.location}</span>
+                  </div>
                   <span className={Style.expTitle}>{exp.title}</span>
                   <ul className={Style.expBullets}>
                     {exp.bullets.map((b, j) => (

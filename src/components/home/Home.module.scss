@@ -16,6 +16,11 @@
     padding: 2rem 1.5rem 3rem;
     gap: 2rem;
     text-align: center;
+    min-height: unset;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1.1rem 3rem;
   }
 }
 
@@ -25,6 +30,12 @@
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+
+  @media (max-width: 860px) {
+    width: 100%;
+    flex: none;
+    gap: 1.25rem;
+  }
 }
 
 /* ─── Headline ──────────────────────────────────── */
@@ -38,6 +49,11 @@
   line-height: 1.15;
   flex-wrap: wrap;
   animation: fadeSlideUp 0.6s ease both;
+
+  @media (max-width: 860px) {
+    justify-content: center;
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
 }
 
 /* violet pill badge around name */
@@ -71,6 +87,10 @@
   font-weight: 400;
   letter-spacing: 0.2px;
   animation: fadeSlideUp 0.6s ease 0.15s both;
+
+  @media (max-width: 860px) {
+    font-size: 0.85rem;
+  }
 }
 
 /* ─── Bio chips ─────────────────────────────────── */
@@ -96,6 +116,13 @@
   background: rgba(124, 58, 237, 0.06);
   white-space: nowrap;
   animation: fadeSlideUp 0.5s ease both;
+
+  @media (max-width: 860px) {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.75rem;
+    text-align: left;
+  }
 }
 
 .chipEmoji {
@@ -273,13 +300,9 @@
   position: relative;
   width: 340px;
 
-  @media (min-width: 1100px) {
-    width: 390px;
-  }
-
-  @media (max-width: 860px) {
-    width: 260px;
-  }
+  @media (min-width: 1100px) { width: 390px; }
+  @media (max-width: 860px)  { width: 240px; }
+  @media (max-width: 480px)  { width: 200px; }
 }
 
 .photo {
@@ -291,9 +314,8 @@
   display: block;
   animation: fadeSlideLeft 0.7s ease 0.2s both, float 5s ease-in-out 1s infinite;
 
-  @media (max-width: 860px) {
-    height: 340px;
-  }
+  @media (max-width: 860px) { height: 320px; }
+  @media (max-width: 480px) { height: 270px; }
 }
 
 /* ─── Experience badge ──────────────────────────── */
