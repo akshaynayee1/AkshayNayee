@@ -17,7 +17,7 @@ export default function Navbar({ darkMode, handleClick }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  //const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => Splitting(), 100);
