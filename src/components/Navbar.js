@@ -3,7 +3,6 @@ import Style from "./Navbar.module.scss";
 import { Box } from "@mui/material";
 import Toggler from "./home/Toggler";
 import { Link, useLocation } from "react-router-dom";
-import { info } from "../info/Info";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
