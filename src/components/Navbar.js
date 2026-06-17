@@ -4,7 +4,7 @@ import "splitting/dist/splitting.css";
 import Style from "./Navbar.module.scss";
 import { Box, IconButton, Drawer } from "@mui/material";
 import Toggler from "./home/Toggler";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { info } from "../info/Info";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
