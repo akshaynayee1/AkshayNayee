@@ -1,7 +1,7 @@
 import React, { useMemo, useEffect } from 'react';
 import Style from './DarkModeBackground.module.scss';
 
-const PLANET = { x: 14, y: 74 };
+const PLANET = { x: 82, y: 68 };
 const SHIP_COUNT = 5;
 
 export default function DarkModeBackground() {

@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Splitting from "splitting";
-import "splitting/dist/splitting.css";
+import React, { useEffect, useState, useRef } from "react";
 import Style from "./Navbar.module.scss";
-import { Box, IconButton, Drawer } from "@mui/material";
+import { Box } from "@mui/material";
 import Toggler from "./home/Toggler";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { info } from "../info/Info";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MailIcon from "@mui/icons-material/Mail";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
+import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function Navbar({ darkMode, handleClick }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [closing, setClosing] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  //const location = useLocation();
+const navLinks = [
+  { name: "Home",   path: "/" },
+  { name: "About",  path: "/about" },
+  { name: "Portfolio", path: "/portfolio" },
+];
 
-  useEffect(() => {
-    const timer = setTimeout(() => Splitting(), 100);
-    return () => clearTimeout(timer);
-  }, []);
+export default function Navbar({ darkMode, handleClick }) {
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const location                   = useLocation();
+  const pillRef                    = useRef(null);
+  const linkRefs                   = useRef([]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -30,114 +26,115 @@ export default function Navbar({ darkMode, handleClick }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toggleSidebar = () => {
-    if (sidebarOpen) {
-      setClosing(true);
-      setTimeout(() => { setSidebarOpen(false); setClosing(false); }, 400);
-    } else {
-      setSidebarOpen(true);
-    }
+  useEffect(() => { setMenuOpen(false); }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const movePill = (el) => {
+    if (!pillRef.current || !el) return;
+    const parent = el.parentElement.getBoundingClientRect();
+    const rect   = el.getBoundingClientRect();
+    pillRef.current.style.left    = `${rect.left - parent.left}px`;
+    pillRef.current.style.width   = `${rect.width}px`;
+    pillRef.current.style.opacity = "1";
   };
 
-  const navLinks = [
-    { name: "Home",   path: "/" },
-    { name: "About",  path: "/about" },
-    { name: "Resume", path: "/portfolio" },
-    { name: "Blogs",  path: "/blogs" },
-  ];
+  const hidePill = () => {
+    if (pillRef.current) pillRef.current.style.opacity = "0";
+  };
 
   return (
-    <Box
-      component="nav"
-      className={`${Style.navbar} ${darkMode ? Style.navbarDark : Style.navbarLight} ${scrolled ? Style.scrolled : ""}`}
-    >
-      <Box className={Style.container}>
+    <>
+      <Box
+        component="nav"
+        className={`${Style.navbar} ${darkMode ? Style.navbarDark : Style.navbarLight} ${scrolled ? Style.scrolled : ""}`}
+      >
+        <Box className={Style.container}>
 
-        {/* Left: Avatar + Logo */}
-        <Box className={Style.left}>
-          <img
-            src={info.selfPortrait}
-            alt={`${info.firstName} ${info.lastName}`}
-            className={`${Style.avatar} ${Style.shadowed}`}
-          />
+          {/* Logo */}
           <a href="/" className={`${Style.logo} ${darkMode ? Style.darkText : Style.lightText}`}>
-            {"Akshay".split("").map((char, i) => (
-              <span key={i} style={{ "--char-index": i }}>{char}</span>
-            ))}
-            &nbsp;
-            {"Nayee".split("").map((char, i) => (
-              <span key={i + 20} style={{ "--char-index": i + 20 }}>{char}</span>
-            ))}
+            <span className={Style.logoName}>
+              {"Akshay".split("").map((c, i) => <span key={i}>{c}</span>)}
+              <span>&nbsp;</span>
+              {"Nayee".split("").map((c, i) => (
+                <span key={i + 20} className={Style.logoLastName}>{c}</span>
+              ))}
+            </span>
+            <span className={Style.availDot} title="Available for work" />
           </a>
-        </Box>
 
-        {/* Right */}
-        <Box className={Style.right}>
-          <a href="mailto:akshaynayee2@gmail.com" className={Style.hireBtn}>Hire Me</a>
-          <Box className={Style.togglerWrapper}>
+          {/* Center nav — desktop */}
+          <Box
+            className={Style.centerLinks}
+            onMouseLeave={hidePill}
+          >
+            {/* Sliding pill */}
+            <div className={Style.navPill} ref={pillRef} />
+
+            {navLinks.map((link, i) => {
+              const active = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  ref={el => (linkRefs.current[i] = el)}
+                  onMouseEnter={() => movePill(linkRefs.current[i])}
+                  className={`${Style.navLink} ${active ? Style.navLinkActive : ""} ${darkMode ? Style.darkText : Style.lightText}`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </Box>
+
+          {/* Right */}
+          <Box className={Style.right}>
+            <a href="mailto:akshaynayee2@gmail.com" className={`${Style.hireBtn} ${Style.hideOnMobile}`}>
+              <span className={Style.hireBtnShimmer} />
+              Let's Connect
+            </a>
             <Toggler darkMode={darkMode} handleClick={handleClick} />
+            <button
+              className={`${Style.menuBtn} ${darkMode ? Style.darkIcon : Style.lightIcon} ${menuOpen ? Style.menuBtnOpen : ""}`}
+              onClick={() => setMenuOpen(v => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
           </Box>
-          <Box onClick={toggleSidebar} className={Style.menuButton} role="button" aria-label="Menu">
-            <DragHandleIcon className={darkMode ? Style.darkIcon : Style.lightIcon} />
-          </Box>
+
         </Box>
       </Box>
 
-      {/* Sidebar */}
-      <Drawer
-        anchor="right"
-        open={sidebarOpen || closing}
-        onClose={toggleSidebar}
-        PaperProps={{
-          className: `${Style.drawerPaper} ${closing ? Style.drawerPaperClosing : Style.drawerPaperOpening}`,
-        }}
-        hideBackdrop={false}
-        ModalProps={{ keepMounted: true }}
-      >
-        <Box className={Style.sidebar} role="presentation">
-
-          <IconButton onClick={toggleSidebar} className={Style.closeButton} aria-label="Close">
-            <CloseIcon className={darkMode ? Style.darkIcon : Style.lightIcon} />
-          </IconButton>
-
-          <Box className={Style.sidebarTop}>
-            <p>
-              Looking for a full-time position where I can make a meaningful
-              impact through my technical and leadership abilities.
-              <br /><br />
-              Let's <strong>connect</strong> and talk about the possibilities.
-            </p>
-            <Box className={Style.socialIcons}>
-              <a href={info.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <LinkedInIcon />
-              </a>
-              <a href={info.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <GitHubIcon />
-              </a>
-              <a href="mailto:akshaynayee2@gmail.com" aria-label="Email">
-                <MailIcon />
-              </a>
-              <a href="tel:+18145044741" aria-label="Phone">
-                <PhoneIcon />
-              </a>
-            </Box>
-          </Box>
-
-          <Box className={Style.sidebarBottom}>
-            {navLinks.map((link, index) => (
-              <Link
-                key={index}
-                to={link.path}
-                className={Style.sidebarNavLink}
-                onClick={toggleSidebar}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </Box>
-
-        </Box>
-      </Drawer>
-    </Box>
+      {/* Mobile full-screen overlay */}
+      <div className={`${Style.mobileOverlay} ${menuOpen ? Style.mobileOverlayOpen : ""} ${darkMode ? Style.overlayDark : Style.overlayLight}`}>
+        <div className={Style.overlayDecor}>MENU</div>
+        <div className={Style.overlayBlob} />
+        <nav className={Style.mobileNav}>
+          {navLinks.map((link, i) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`${Style.mobileLink} ${location.pathname === link.path ? Style.mobileLinkActive : ""}`}
+              style={{ animationDelay: menuOpen ? `${i * 0.07 + 0.05}s` : "0s" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className={Style.mobileLinkNum}>0{i + 1}</span>
+              {link.name}
+            </Link>
+          ))}
+          <a
+            href="mailto:akshaynayee2@gmail.com"
+            className={Style.mobileCta}
+            style={{ animationDelay: menuOpen ? `${navLinks.length * 0.07 + 0.1}s` : "0s" }}
+          >
+            Let's Connect ↗
+          </a>
+        </nav>
+      </div>
+    </>
   );
 }

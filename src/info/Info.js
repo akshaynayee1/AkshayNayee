@@ -1,5 +1,3 @@
-import self from "../img/ak1.png";
-import melolem from "../img/melolem.png";
 import resumePdf from "../pdf/Akshay.pdf";
 
 export let colors = [
@@ -15,7 +13,7 @@ export const info = {
   initials: "AK",
   linkedin: "https://www.linkedin.com/in/akshaynayee1/",
   instagram: "https://www.instagram.com/aakkii01",
-  github: "https://github.com/Nayee001",
+  github: "https://github.com/akshaynayee1",
   resumePdf: resumePdf,
 
   position: [
@@ -25,7 +23,6 @@ export const info = {
     "Full Stack Engineer",
   ],
 
-  selfPortrait: self,
   gradient: `-webkit-linear-gradient(135deg, ${colors[0]}, ${colors[2]})`,
   baseColor: colors[0],
 
@@ -36,7 +33,7 @@ export const info = {
     },
     {
       emoji: "💼",
-      text: "Software Engineer",
+      text: "Software Engineer @ Plaid",
     },
     {
       emoji: "🎓",
@@ -54,7 +51,7 @@ export const info = {
 
   socials: [
     {
-      link: "https://github.com/Nayee001",
+      link: "https://github.com/akshaynayee1",
       icon: "fa fa-github",
       label: "GitHub",
     },
@@ -66,12 +63,14 @@ export const info = {
   ],
 
   bio:
-    "Software Engineer with 4+ years of experience building AI-powered applications, scalable backend systems, and modern web platforms. Currently at Plaid, developing Kafka-based microservices and AI-driven services that process large-scale financial data. Experienced in Generative AI, LLM applications, Retrieval-Augmented Generation (RAG), cloud-native architectures, and full-stack development. Proven track record delivering production-grade solutions using Python, FastAPI, React, Angular, AWS, Docker, and Kubernetes.",
+    "Software Engineer with 5+ years of experience building AI-powered applications, scalable backend systems, and modern web platforms. Currently at Plaid, developing Kafka-based microservices and AI-driven services that process large-scale financial data. Experienced in Generative AI, LLM applications, Retrieval-Augmented Generation (RAG), cloud-native architectures, and full-stack development. Proven track record delivering production-grade solutions using Python, FastAPI, React, Angular, AWS, Docker, and Kubernetes.",
 
   skills: {
     proficientWith: [
       "Python",
       "FastAPI",
+      "Django",
+      "Node.js",
       "TypeScript",
       "JavaScript (ES6+)",
       "React.js",
@@ -80,11 +79,14 @@ export const info = {
       "PostgreSQL",
       "MongoDB",
       "Redis",
+      "Apache Kafka",
+      "Stripe",
       "AWS (Lambda, EC2, S3)",
       "Docker",
       "Kubernetes",
       "OpenAI GPT-4",
       "RAG Pipelines",
+      "Prompt Engineering",
       "Vector Databases",
       "LLM Applications",
       "GitHub Actions",
@@ -174,30 +176,34 @@ export const info = {
 
   education: [
     {
+      level: "Masters",
       degree: "Master of Computer and Information Science in Software Engineering",
       school: "Gannon University",
       location: "PA, USA",
-      year: "May 2025",
+      duration: "Aug 2023 – May 2025",
     },
     {
+      level: "Bachelors",
       degree: "Bachelor of Technology in Computer Engineering",
       school: "Gujarat Technological University",
       location: "India",
-      year: "July 2020",
+      duration: "July 2017 – July 2020",
+    },
+    {
+      level: "Diploma",
+      degree: "Diploma of Technology in Computer Engineering",
+      school: "Gujarat Technological University",
+      location: "India",
+      duration: "June 2014 – June 2017",
     },
   ],
 
   certifications: [
-    "AWS Certified Cloud Practitioner",
-    "Lakehouse Architecture on Databricks",
-    "Generative AI",
+    { name: "AWS Certified Cloud Practitioner", url: "https://www.credly.com/badges/3c04e1ec-8ffc-43e1-8a20-011252cc5e3b/linked_in_profile" },
+    { name: "Lakehouse Architecture on Databricks" },
+    { name: "Generative AI" },
+    { name: "Python Django Full Stack", url: "https://www.udemy.com/certificate/UC-b3d1acf0-16a5-4b5f-9099-6ab89ffa8d6c/" },
+    { name: "Programming for Everybody (Getting Started with Python)", url: "https://coursera.org/share/a0bebe3aebeefbe611bac31ca2d70897" },
   ],
 
-  portfolio: [
-    {
-      title: "AI Financial Insights Platform",
-      live: "https://www.melolem.com/",
-      image: melolem,
-    },
-  ],
 };
