@@ -63,7 +63,7 @@ export const info = {
   ],
 
   bio:
-    "Software Engineer with 5+ years of experience building AI-powered applications, scalable backend systems, and modern web platforms. Currently at Plaid, developing Kafka-based microservices and AI-driven services that process large-scale financial data. Experienced in Generative AI, LLM applications, Retrieval-Augmented Generation (RAG), cloud-native architectures, and full-stack development. Proven track record delivering production-grade solutions using Python, FastAPI, React, Angular, AWS, Docker, and Kubernetes.",
+    "I wrote my first line of code at 17 in a small town in Gujarat — just curious to see what would happen. That curiosity turned into a career spanning two countries, three companies, and thousands of commits. Today I'm at Plaid, building AI-driven financial infrastructure that touches millions of people. I'm obsessed with the place where intelligence meets scale: LLMs that actually work in production, distributed systems that don't break at 3am, and software that genuinely matters.",
 
   skills: {
     proficientWith: [

@@ -21,6 +21,20 @@ const FEATURED = [
     live: 'https://melolem.com/',
     color: '#3572A5',
   },
+  {
+    name: 'Virtual Fault Current Limiting System',
+    tagline: 'Distributed IoT Architecture for Smart Electrical Protection',
+    description:
+      'A multi-module IoT system for real-time fault current detection and automated limitation in electrical networks. Four independent components work in concert — core fault control logic, a live monitoring GUI, encrypted data storage, and a hardware signal sender — designed to protect electrical infrastructure through smart automation.',
+    modules: [
+      { label: 'vfcl_iot',      repo: 'vfcl_iot',      desc: 'Core fault control' },
+      { label: 'iotgui',        repo: 'iotgui',         desc: 'Live dashboard GUI' },
+      { label: 'dir_encrypt',   repo: 'dir_encrypt',    desc: 'Encrypted storage' },
+      { label: 'signal-sender', repo: 'signal-sender',  desc: 'Signal transmitter' },
+    ],
+    tech: ['Python', 'IoT', 'MQTT', 'Raspberry Pi', 'Cryptography', 'Signal Processing', 'GPIO'],
+    color: '#059669',
+  },
 ];
 
 const LANG_COLORS = {
@@ -181,36 +195,77 @@ export default function Portfolio({ darkMode }) {
       {/* ── Featured Projects ── */}
       <div className={Style.featuredSection}>
         <p className={Style.featuredLabel}>
-          <RocketLaunchIcon style={{ fontSize: '0.85rem' }} /> Featured
+          <RocketLaunchIcon style={{ fontSize: '0.85rem' }} /> Featured Projects
         </p>
-        {FEATURED.map(p => (
+        {FEATURED.map((p, idx) => (
           <div key={p.name} className={Style.featuredCard} style={{ '--feat-color': p.color }}>
             <div className={Style.featuredBg} />
+            <span className={Style.featuredIdx}>0{idx + 1}</span>
+
             <div className={Style.featuredLeft}>
-              <div className={Style.featuredWindowDots}>
-                <span style={{ background: '#ff5f57' }} />
-                <span style={{ background: '#febc2e' }} />
-                <span style={{ background: '#28c840' }} />
+              {/* Header row */}
+              <div className={Style.featuredTopRow}>
+                <div className={Style.featuredWindowDots}>
+                  <span style={{ background: '#ff5f57' }} />
+                  <span style={{ background: '#febc2e' }} />
+                  <span style={{ background: '#28c840' }} />
+                </div>
+                <span className={Style.featuredBadge}>
+                  {p.live ? '● Live' : '◆ Open Source'}
+                </span>
               </div>
+
               <h2 className={Style.featuredName}>{p.name}</h2>
               <p className={Style.featuredTagline}>{p.tagline}</p>
               <p className={Style.featuredDesc}>{p.description}</p>
-              <div className={Style.featuredRoles}>
-                {p.roles.map(r => (
-                  <span key={r} className={Style.featuredRoleChip}>{r}</span>
-                ))}
-              </div>
-              <div className={Style.featuredTech}>
-                {p.tech.map(t => (
-                  <span key={t} className={Style.featuredTechChip}>{t}</span>
-                ))}
-              </div>
+
+              {p.roles && (
+                <div className={Style.featuredRoles}>
+                  {p.roles.map(r => (
+                    <span key={r} className={Style.featuredRoleChip}>{r}</span>
+                  ))}
+                </div>
+              )}
+              {p.modules && (
+                <div className={Style.featuredModules}>
+                  {p.modules.map(m => (
+                    <a key={m.repo}
+                       href={`https://github.com/${GITHUB_USER}/${m.repo}`}
+                       target="_blank" rel="noopener noreferrer"
+                       className={Style.featuredModuleChip}
+                       style={{ '--mc': p.color }}>
+                      <GitHubIcon style={{ fontSize: '0.72rem' }} />
+                      <span className={Style.moduleName}>{m.label}</span>
+                      <span className={Style.moduleDesc}>{m.desc}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
+
+            {/* Right panel — tech stack + CTA */}
             <div className={Style.featuredRight}>
-              <a href={p.live} target="_blank" rel="noopener noreferrer" className={Style.featuredLiveBtn}>
-                <OpenInNewIcon style={{ fontSize: '1rem' }} />
-                Visit Live Site
-              </a>
+              <div className={Style.featuredTechPanel}>
+                <span className={Style.techPanelLabel}>Tech Stack</span>
+                <div className={Style.featuredTech}>
+                  {p.tech.map(t => (
+                    <span key={t} className={Style.featuredTechChip}>{t}</span>
+                  ))}
+                </div>
+              </div>
+              {p.live ? (
+                <a href={p.live} target="_blank" rel="noopener noreferrer" className={Style.featuredLiveBtn}>
+                  <OpenInNewIcon style={{ fontSize: '0.95rem' }} />
+                  Visit Live Site
+                </a>
+              ) : p.modules && (
+                <a href={`https://github.com/${GITHUB_USER}/${p.modules[0].repo}`}
+                   target="_blank" rel="noopener noreferrer"
+                   className={Style.featuredLiveBtn}>
+                  <GitHubIcon style={{ fontSize: '0.95rem' }} />
+                  View on GitHub
+                </a>
+              )}
             </div>
           </div>
         ))}

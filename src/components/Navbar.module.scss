@@ -246,11 +246,10 @@
   inset: 0;
   z-index: 999;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.32s ease;
   overflow: hidden;
 
   @media (min-width: 769px) { display: none; }
@@ -261,120 +260,209 @@
   pointer-events: all;
 }
 
-.overlayDark  { background: rgba(4, 6, 16, 0.97); }
-.overlayLight { background: rgba(248, 246, 255, 0.97); }
+.overlayDark  { background: #04060f; }
+.overlayLight { background: #f5f3ff; }
 
-/* big faded "MENU" behind everything */
+/* Left accent bar */
+.overlayAccent {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #7c3aed 0%, #a78bfa 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Big faded "MENU" watermark */
 .overlayDecor {
   position: absolute;
-  font-size: clamp(6rem, 28vw, 14rem);
+  font-size: clamp(8rem, 36vw, 18rem);
   font-weight: 900;
   letter-spacing: -6px;
-  opacity: 0.04;
+  opacity: 0.03;
   color: #7c3aed;
   user-select: none;
   pointer-events: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: -2rem;
+  right: -1rem;
+  line-height: 1;
 }
 
-/* blurred violet blob */
+/* Blobs */
 .overlayBlob {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 340px; height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%);
+  filter: blur(70px);
   pointer-events: none;
-  bottom: -60px;
-  right: -60px;
+  top: -80px; right: -80px;
 }
 
+.overlayBlob2 {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.14) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  bottom: 60px; left: -60px;
+}
+
+/* Nav container */
 .mobileNav {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
+  flex: 1;
   width: 100%;
-  padding: 3rem 2.5rem;
+  padding: 5.5rem 2rem 2rem;
 }
 
+.overlayEyebrow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7c3aed;
+  opacity: 0.6;
+  margin: 0 0 1.2rem 0.5rem;
+}
+
+/* Links wrapper */
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Each link row */
 .mobileLink {
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  font-size: clamp(2.4rem, 10vw, 3.8rem);
-  font-weight: 800;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid rgba(124,58,237,0.12);
   text-decoration: none;
   color: inherit;
-  letter-spacing: -1px;
-  line-height: 1.2;
   opacity: 0;
-  transform: translateX(-30px);
-  border-left: 3px solid transparent;
-  padding-left: 0.75rem;
-  transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+  transform: translateY(18px);
+  transition: color 0.2s ease, background 0.2s ease, padding-left 0.2s ease;
+  border-radius: 10px;
 
   .mobileOverlayOpen & {
-    animation: slideInLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: slideInUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
   }
 
   &:hover {
     color: #7c3aed;
-    border-left-color: #7c3aed;
-    padding-left: 1.2rem;
+    background: rgba(124,58,237,0.06);
+    padding-left: 1rem;
+
+    .mobileLinkArrow { opacity: 1; transform: translate(0,0); }
+    .mobileLinkNum   { opacity: 1; }
   }
 }
 
 .mobileLinkActive {
-  color: #7c3aed;
-  border-left-color: #7c3aed !important;
+  color: #7c3aed !important;
+  .mobileLinkNum { opacity: 1 !important; }
+  .mobileLinkArrow { opacity: 0.6 !important; transform: translate(0,0) !important; }
 }
 
 .mobileLinkNum {
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: #7c3aed;
-  opacity: 0.6;
+  font-size: 0.62rem;
+  font-weight: 700;
   letter-spacing: 2px;
-  margin-bottom: 0.3rem;
+  color: #7c3aed;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  min-width: 22px;
+}
+
+.mobileLinkName {
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+  flex: 1;
+}
+
+.mobileLinkArrow {
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
 }
 
-.mobileCta {
+/* Footer */
+.overlayFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 2rem;
-  margin-left: 0.75rem;
-  display: inline-block;
-  padding: 0.8rem 2.2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(124,58,237,0.14);
+  opacity: 0;
+  transform: translateY(14px);
+
+  .mobileOverlayOpen & {
+    animation: slideInUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+}
+
+.overlaySocials {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.overlaySocialBtn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(124,58,237,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: #7c3aed;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+
+  svg { font-size: 1rem; }
+
+  &:hover {
+    background: rgba(124,58,237,0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.mobileCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 50px;
   background: linear-gradient(135deg, #7c3aed, #a78bfa);
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.35);
-  opacity: 0;
-  transform: translateX(-30px);
+  font-size: 0.85rem;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 22px rgba(124,58,237,0.38);
+  white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  .mobileOverlayOpen & {
-    animation: slideInLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.45);
+    box-shadow: 0 10px 28px rgba(124,58,237,0.48);
   }
 }
 
+@keyframes slideInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes slideInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  to { opacity: 1; transform: translateX(0); }
 }

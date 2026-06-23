@@ -3,8 +3,19 @@ import Style from "./Navbar.module.scss";
 import { Box } from "@mui/material";
 import Toggler from "./home/Toggler";
 import { Link, useLocation } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon      from "@mui/icons-material/Menu";
+import CloseIcon     from "@mui/icons-material/Close";
+import LinkedInIcon  from "@mui/icons-material/LinkedIn";
+import GitHubIcon    from "@mui/icons-material/GitHub";
+import MailIcon      from "@mui/icons-material/Mail";
+import PhoneIcon     from "@mui/icons-material/Phone";
+
+const overlaySocials = [
+  { href: "https://www.linkedin.com/in/akshaynayee1/", Icon: LinkedInIcon },
+  { href: "https://github.com/akshaynayee1",           Icon: GitHubIcon   },
+  { href: "mailto:akshaynayee2@gmail.com",             Icon: MailIcon     },
+  { href: "tel:+18145044741",                          Icon: PhoneIcon    },
+];
 
 const navLinks = [
   { name: "Home",   path: "/" },
@@ -110,28 +121,44 @@ export default function Navbar({ darkMode, handleClick }) {
 
       {/* Mobile full-screen overlay */}
       <div className={`${Style.mobileOverlay} ${menuOpen ? Style.mobileOverlayOpen : ""} ${darkMode ? Style.overlayDark : Style.overlayLight}`}>
-        <div className={Style.overlayDecor}>MENU</div>
+        <div className={Style.overlayAccent} />
         <div className={Style.overlayBlob} />
+        <div className={Style.overlayBlob2} />
+        <div className={Style.overlayDecor}>MENU</div>
+
         <nav className={Style.mobileNav}>
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`${Style.mobileLink} ${location.pathname === link.path ? Style.mobileLinkActive : ""}`}
-              style={{ animationDelay: menuOpen ? `${i * 0.07 + 0.05}s` : "0s" }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className={Style.mobileLinkNum}>0{i + 1}</span>
-              {link.name}
-            </Link>
-          ))}
-          <a
-            href="mailto:akshaynayee2@gmail.com"
-            className={Style.mobileCta}
-            style={{ animationDelay: menuOpen ? `${navLinks.length * 0.07 + 0.1}s` : "0s" }}
-          >
-            Let's Connect ↗
-          </a>
+          <p className={Style.overlayEyebrow}>Navigate</p>
+
+          <div className={Style.mobileLinks}>
+            {navLinks.map((link, i) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`${Style.mobileLink} ${location.pathname === link.path ? Style.mobileLinkActive : ""}`}
+                style={{ animationDelay: menuOpen ? `${i * 0.08 + 0.05}s` : "0s" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className={Style.mobileLinkNum}>0{i + 1}</span>
+                <span className={Style.mobileLinkName}>{link.name}</span>
+                <span className={Style.mobileLinkArrow}>↗</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className={Style.overlayFooter} style={{ animationDelay: menuOpen ? `${navLinks.length * 0.08 + 0.1}s` : "0s" }}>
+            <div className={Style.overlaySocials}>
+              {overlaySocials.map(({ href, Icon }) => (
+                <a key={href} href={href} className={Style.overlaySocialBtn}
+                   target={href.startsWith('http') ? '_blank' : undefined}
+                   rel="noopener noreferrer">
+                  <Icon />
+                </a>
+              ))}
+            </div>
+            <a href="mailto:akshaynayee2@gmail.com" className={Style.mobileCta}>
+              Let's Connect ↗
+            </a>
+          </div>
         </nav>
       </div>
     </>
