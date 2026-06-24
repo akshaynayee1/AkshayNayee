@@ -32,7 +32,7 @@ const FEATURED = [
       { label: 'dir_encrypt',   repo: 'dir_encrypt',    desc: 'Encrypted storage' },
       { label: 'signal-sender', repo: 'signal-sender',  desc: 'Signal transmitter' },
     ],
-    tech: ['Python', 'IoT', 'MQTT', 'Raspberry Pi', 'Cryptography', 'Signal Processing', 'GPIO'],
+    tech: ['Python', 'IoT', 'MQTT', 'Raspberry Pi', 'Cryptography', 'Signal Processing', 'GPIO', 'Laravel APIs', 'PostgreSQL', 'AWS', 'ESP32 / C++'],
     color: '#059669',
   },
 ];

@@ -81,7 +81,7 @@ export default function About({ darkMode }) {
               <span className={Style.chip}><span className={Style.chipNum}>5+</span> yrs exp.</span>
               <span className={Style.chip}>@ <strong>Plaid</strong></span>
               <span className={Style.chip}>📍 PA, USA</span>
-              <span className={Style.chip}>🌊 Open to relocate</span>
+              <span className={Style.chip}>🌊 Relocate-ready</span>
             </div>
 
             <p className={Style.heroBio}>{info.bio}</p>
@@ -204,7 +204,7 @@ export default function About({ darkMode }) {
             const name   = typeof c === 'string' ? c : c.name;
             const url    = typeof c === 'object' ? c.url : null;
             const n = name.toLowerCase();
-            const issuerMap = n.includes('aws')        ? { label: 'AWS',        logo: 'https://cdn.simpleicons.org/amazonwebservices' }
+            const issuerMap = n.includes('aws')        ? { label: 'AWS',        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' }
                             : n.includes('databricks') ? { label: 'Databricks', logo: 'https://cdn.simpleicons.org/databricks' }
                             : n.includes('django')     ? { label: 'Udemy',      logo: 'https://cdn.simpleicons.org/udemy' }
                             : n.includes('everybody')  ? { label: 'Coursera',   logo: 'https://cdn.simpleicons.org/coursera' }

@@ -200,8 +200,6 @@ export const info = {
 
   certifications: [
     { name: "AWS Certified Cloud Practitioner", url: "https://www.credly.com/badges/3c04e1ec-8ffc-43e1-8a20-011252cc5e3b/linked_in_profile" },
-    { name: "Lakehouse Architecture on Databricks" },
-    { name: "Generative AI" },
     { name: "Python Django Full Stack", url: "https://www.udemy.com/certificate/UC-b3d1acf0-16a5-4b5f-9099-6ab89ffa8d6c/" },
     { name: "Programming for Everybody (Getting Started with Python)", url: "https://coursera.org/share/a0bebe3aebeefbe611bac31ca2d70897" },
   ],
