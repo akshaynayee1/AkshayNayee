@@ -9,7 +9,6 @@ import CloudIcon     from "@mui/icons-material/Cloud";
 import SchoolIcon    from "@mui/icons-material/School";
 import LinkedInIcon  from "@mui/icons-material/LinkedIn";
 import GitHubIcon    from "@mui/icons-material/GitHub";
-import MailIcon      from "@mui/icons-material/Mail";
 import PhoneIcon     from "@mui/icons-material/Phone";
 import VerifiedIcon  from "@mui/icons-material/Verified";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -31,10 +30,9 @@ const journey = [
 ];
 
 const socials = [
-  { href: info.linkedin,                   Icon: LinkedInIcon, label: "LinkedIn",      color: "#0077b5" },
-  { href: info.github,                     Icon: GitHubIcon,   label: "GitHub",        color: "#7c3aed" },
-  { href: "mailto:akshaynayee2@gmail.com", Icon: MailIcon,     label: "Email",         color: "#059669" },
-  { href: "tel:+18145044741",              Icon: PhoneIcon,    label: "+1 814 504 4741", color: "#f59e0b" },
+  { href: info.linkedin,      Icon: LinkedInIcon, label: "LinkedIn",        color: "#0077b5" },
+  { href: info.github,        Icon: GitHubIcon,   label: "GitHub",          color: "#7c3aed" },
+  { href: "tel:+18145044741", Icon: PhoneIcon,    label: "+1 814 504 4741", color: "#f59e0b" },
 ];
 
 export default function About({ darkMode }) {
@@ -204,10 +202,12 @@ export default function About({ darkMode }) {
             const name   = typeof c === 'string' ? c : c.name;
             const url    = typeof c === 'object' ? c.url : null;
             const n = name.toLowerCase();
-            const issuerMap = n.includes('aws')        ? { label: 'AWS',        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' }
-                            : n.includes('databricks') ? { label: 'Databricks', logo: 'https://cdn.simpleicons.org/databricks' }
-                            : n.includes('django')     ? { label: 'Udemy',      logo: 'https://cdn.simpleicons.org/udemy' }
-                            : n.includes('everybody')  ? { label: 'Coursera',   logo: 'https://cdn.simpleicons.org/coursera' }
+            const u = (url || '').toLowerCase();
+            const issuerMap = n.includes('aws')          ? { label: 'AWS',        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' }
+                            : n.includes('databricks')   ? { label: 'Databricks', logo: 'https://cdn.simpleicons.org/databricks' }
+                            : n.includes('django')       ? { label: 'Udemy',      logo: 'https://cdn.simpleicons.org/udemy' }
+                            : n.includes('everybody')    ? { label: 'Coursera',   logo: 'https://cdn.simpleicons.org/coursera' }
+                            : u.includes('hackerrank')   ? { label: 'HackerRank', logo: 'https://cdn.simpleicons.org/hackerrank' }
                             : { label: 'Certificate',  logo: null };
             return (
               <div key={i} className={Style.certCard}>

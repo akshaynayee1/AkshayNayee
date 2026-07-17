@@ -7,13 +7,11 @@ import MenuIcon      from "@mui/icons-material/Menu";
 import CloseIcon     from "@mui/icons-material/Close";
 import LinkedInIcon  from "@mui/icons-material/LinkedIn";
 import GitHubIcon    from "@mui/icons-material/GitHub";
-import MailIcon      from "@mui/icons-material/Mail";
 import PhoneIcon     from "@mui/icons-material/Phone";
 
 const overlaySocials = [
   { href: "https://www.linkedin.com/in/akshaynayee1/", Icon: LinkedInIcon },
   { href: "https://github.com/akshaynayee1",           Icon: GitHubIcon   },
-  { href: "mailto:akshaynayee2@gmail.com",             Icon: MailIcon     },
   { href: "tel:+18145044741",                          Icon: PhoneIcon    },
 ];
 
@@ -102,10 +100,6 @@ export default function Navbar({ darkMode, handleClick }) {
 
           {/* Right */}
           <Box className={Style.right}>
-            <a href="mailto:akshaynayee2@gmail.com" className={`${Style.hireBtn} ${Style.hideOnMobile}`}>
-              <span className={Style.hireBtnShimmer} />
-              Let's Connect
-            </a>
             <Toggler darkMode={darkMode} handleClick={handleClick} />
             <button
               className={`${Style.menuBtn} ${darkMode ? Style.darkIcon : Style.lightIcon} ${menuOpen ? Style.menuBtnOpen : ""}`}
@@ -155,9 +149,6 @@ export default function Navbar({ darkMode, handleClick }) {
                 </a>
               ))}
             </div>
-            <a href="mailto:akshaynayee2@gmail.com" className={Style.mobileCta}>
-              Let's Connect ↗
-            </a>
           </div>
         </nav>
       </div>

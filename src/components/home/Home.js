@@ -4,7 +4,6 @@ import me from '../../img/newAK.jpg';
 import { info } from "../../info/Info";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 export default function Home() {
@@ -32,11 +31,12 @@ export default function Home() {
             </div>
 
             <div className={Style.ctaRow}>
-               <a href={info.resumePdf} target="_blank" rel="noopener noreferrer" className={Style.hireBtn}>
-                  Download Resume
-               </a>
-               <a href="/about" className={Style.arrowBtn} aria-label="About">
-                  ↗
+               <a href="/about" className={Style.aboutBtn}>
+                  <span className={Style.aboutBtnShimmer} />
+                  <span className={Style.aboutBtnLabel}>About Me</span>
+                  <span className={Style.aboutBtnIcon}>
+                     <span className={Style.aboutBtnArrow}>→</span>
+                  </span>
                </a>
             </div>
 
@@ -51,10 +51,6 @@ export default function Home() {
                      className={Style.socialIcon} aria-label="GitHub">
                      <GitHubIcon fontSize="small" />
                   </a>
-                  <a href="mailto:akshaynayee2@gmail.com"
-                     className={Style.socialIcon} aria-label="Email">
-                     <MailIcon fontSize="small" />
-                  </a>
                   <a href="tel:+18145044741"
                      className={Style.socialIcon} aria-label="Phone">
                      <PhoneIcon fontSize="small" />
@@ -68,7 +64,7 @@ export default function Home() {
             <div className={Style.photoWrap}>
                <img src={me} alt={info.firstName} className={Style.photo} />
                <div className={Style.expBadge}>
-                  <span className={Style.expValue}>5+</span>
+                  <span className={Style.expValue}>4+</span>
                   <span className={Style.expLabel}>Years of{'\n'}Experience</span>
                </div>
             </div>
