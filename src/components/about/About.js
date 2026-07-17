@@ -62,7 +62,7 @@ export default function About({ darkMode }) {
               <img src={me} alt="Akshay Nayee" className={Style.blobImg} />
             </div>
             <div className={Style.floatCard}>
-              <span className={Style.fcVal}>5+</span>
+              <span className={Style.fcVal}>4+</span>
               <span className={Style.fcLbl}>Years Exp.</span>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function About({ darkMode }) {
             <p className={Style.heroRole}>Building AI that ships · Systems that scale · Code that matters</p>
 
             <div className={Style.metaChips}>
-              <span className={Style.chip}><span className={Style.chipNum}>5+</span> yrs exp.</span>
+              <span className={Style.chip}><span className={Style.chipNum}>4+</span> yrs exp.</span>
               <span className={Style.chip}>@ <strong>Plaid</strong></span>
               <span className={Style.chip}>📍 PA, USA</span>
               <span className={Style.chip}>🌊 Relocate-ready</span>
