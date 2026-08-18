@@ -18,7 +18,7 @@ export default function Home() {
                <span className={Style.arrows}>▶▶</span>
             </h1>
 
-            <p className={Style.subtitle}>Software Engineer &amp; AI/ML Data Engineer</p>
+            <p className={Style.subtitle}>Embedded Software Engineer &amp; Firmware Developer</p>
 
             <div className={Style.chips}>
                {info.miniBio.map((bio, i) => (
@@ -64,7 +64,7 @@ export default function Home() {
             <div className={Style.photoWrap}>
                <img src={me} alt={info.firstName} className={Style.photo} />
                <div className={Style.expBadge}>
-                  <span className={Style.expValue}>4+</span>
+                  <span className={Style.expValue}>6+</span>
                   <span className={Style.expLabel}>Years of{'\n'}Experience</span>
                </div>
             </div>

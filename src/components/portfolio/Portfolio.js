@@ -12,16 +12,6 @@ const GITHUB_USER = 'akshaynayee1';
 
 const FEATURED = [
   {
-    name: 'Melolem | Marketplace of Tastes',
-    tagline: 'Full-Stack E-Commerce Platform',
-    description:
-      'A production-grade multi-role e-commerce platform built with Python & Django. Ships three fully independent modules — Customer (browse, cart, checkout), Vendor (product & inventory management), and Admin (platform oversight, order control, analytics). Live payments via Stripe, deployed on AWS with PostgreSQL.',
-    roles: ['Customer', 'Vendor', 'Admin'],
-    tech: ['Python', 'Django', 'PostgreSQL', 'Stripe', 'AWS', 'HTML/CSS', 'JavaScript', 'REST APIs'],
-    live: 'https://melolem.com/',
-    color: '#3572A5',
-  },
-  {
     name: 'Virtual Fault Current Limiting System',
     tagline: 'Distributed IoT Architecture for Smart Electrical Protection',
     description:

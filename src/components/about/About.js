@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import Style from './About.module.scss';
 import { info } from "../../info/Info";
 import me from '../../img/akWave.png';
-import SmartToyIcon  from "@mui/icons-material/SmartToy";
-import CodeIcon      from "@mui/icons-material/Code";
-import StorageIcon   from "@mui/icons-material/Storage";
-import CloudIcon     from "@mui/icons-material/Cloud";
+import MemoryIcon    from "@mui/icons-material/Memory";
+import CableIcon     from "@mui/icons-material/Cable";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import BugReportIcon from "@mui/icons-material/BugReport";
 import SchoolIcon    from "@mui/icons-material/School";
 import LinkedInIcon  from "@mui/icons-material/LinkedIn";
 import GitHubIcon    from "@mui/icons-material/GitHub";
@@ -14,19 +14,19 @@ import VerifiedIcon  from "@mui/icons-material/Verified";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const skills = [
-  { Icon: SmartToyIcon, color: "#7c3aed", name: "AI & ML",       tags: ["OpenAI GPT-4", "RAG", "Prompt Engineering", "LLM Apps", "Vector DBs"] },
-  { Icon: StorageIcon,  color: "#0891b2", name: "Backend",        tags: ["Python", "FastAPI", "Django", "Node.js", "Kafka", "PostgreSQL", "Redis"] },
-  { Icon: CodeIcon,     color: "#2563eb", name: "Frontend",       tags: ["React.js", "Next.js", "Angular", "TypeScript"] },
-  { Icon: CloudIcon,    color: "#059669", name: "Cloud & DevOps", tags: ["AWS", "Docker", "Kubernetes", "Stripe", "Terraform"] },
+  { Icon: MemoryIcon,       color: "#7c3aed", name: "Firmware & RTOS",     tags: ["Embedded C", "C++14/17", "FreeRTOS", "Zephyr RTOS", "Bare-Metal"] },
+  { Icon: CableIcon,        color: "#0891b2", name: "Hardware & Protocols", tags: ["ARM Cortex-M", "SPI", "I2C", "UART", "CAN-FD"] },
+  { Icon: DirectionsCarIcon, color: "#2563eb", name: "Automotive Stacks",   tags: ["AUTOSAR", "UDS (ISO 14229)", "ISO-TP", "Vector CANoe"] },
+  { Icon: BugReportIcon,    color: "#059669", name: "Safety & Test",       tags: ["MISRA-C:2012", "ISO 26262", "JTAG/SWD", "Coverity"] },
 ];
 
 const journey = [
-  { year: "2025", emoji: "⚡",  color: "#7c3aed", event: "Software Engineer · Plaid",       place: "PA, USA",        desc: "Kafka microservices, AI-driven financial infrastructure. Still building every day.", current: true },
-  { year: "2023", emoji: "✈️",  color: "#0891b2", event: "MS Computer Science · Gannon",    place: "PA, USA",        desc: "Moved to the US. Went deep into GenAI, LLMs, and distributed systems research." },
-  { year: "2021", emoji: "💹",  color: "#059669", event: "Software Engineer · Rishabh",     place: "Gujarat, India", desc: "Fintech & healthcare. GraphQL APIs, Elasticsearch, PySpark pipelines at scale." },
-  { year: "2020", emoji: "🚀",  color: "#2563eb", event: "Full Stack Engineer · Webbrains", place: "Gujarat, India", desc: "Angular, Node.js, PostgreSQL. Shipped real products to real users for the first time." },
-  { year: "2017", emoji: "📐",  color: "#f59e0b", event: "B.Tech, Computer Engineering",    place: "Gujarat, India", desc: "Data structures, algorithms, system design. Architecture started to matter." },
-  { year: "2014", emoji: "🖥️",  color: "#6b7280", event: "Diploma, Computer Engineering",   place: "Gujarat, India", desc: "First line of code. Fell completely in love with building things from scratch." },
+  { year: "2025", emoji: "🔧",  color: "#7c3aed", event: "Embedded SW Engineer · Microchip", place: "USA",            desc: "ARM Cortex-M firmware, low-power states, board bring-up. Still building every day.", current: true },
+  { year: "2023", emoji: "✈️",  color: "#0891b2", event: "MS Computer Science · Gannon",      place: "PA, USA",        desc: "Moved to the US. Deepened systems engineering and real-time software architecture skills." },
+  { year: "2022", emoji: "🚗",  color: "#059669", event: "Embedded SW Engineer · Tata Elxsi", place: "Gujarat, India", desc: "Automotive AUTOSAR stacks, UDS diagnostics, CAN-FD networks across 14 vehicle subsystems." },
+  { year: "2019", emoji: "⚙️",  color: "#2563eb", event: "Embedded System Engineer · L&T",    place: "Gujarat, India", desc: "Bare-metal C firmware, real-time control loops, DMA-optimized industrial drivers." },
+  { year: "2017", emoji: "📐",  color: "#f59e0b", event: "B.Tech, Computer Engineering",      place: "Gujarat, India", desc: "Data structures, algorithms, system design. Architecture started to matter." },
+  { year: "2014", emoji: "🖥️",  color: "#6b7280", event: "Diploma, Computer Engineering",     place: "Gujarat, India", desc: "First line of code. Fell completely in love with building things from scratch." },
 ];
 
 const socials = [
@@ -62,7 +62,7 @@ export default function About({ darkMode }) {
               <img src={me} alt="Akshay Nayee" className={Style.blobImg} />
             </div>
             <div className={Style.floatCard}>
-              <span className={Style.fcVal}>4+</span>
+              <span className={Style.fcVal}>6+</span>
               <span className={Style.fcLbl}>Years Exp.</span>
             </div>
           </div>
@@ -73,11 +73,11 @@ export default function About({ darkMode }) {
               <span className={Style.nameFill}>Akshay</span>
               <span className={Style.nameOutline}>Nayee</span>
             </h1>
-            <p className={Style.heroRole}>Building AI that ships · Systems that scale · Code that matters</p>
+            <p className={Style.heroRole}>Bare-metal firmware · Real-time systems · Hardware that just works</p>
 
             <div className={Style.metaChips}>
-              <span className={Style.chip}><span className={Style.chipNum}>4+</span> yrs exp.</span>
-              <span className={Style.chip}>@ <strong>Plaid</strong></span>
+              <span className={Style.chip}><span className={Style.chipNum}>6+</span> yrs exp.</span>
+              <span className={Style.chip}>@ <strong>Microchip</strong></span>
               <span className={Style.chip}>📍 PA, USA</span>
               <span className={Style.chip}>🌊 Relocate-ready</span>
             </div>
